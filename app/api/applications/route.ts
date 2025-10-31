@@ -5,6 +5,8 @@ import Job from '@/models/Job'
 import { verifyToken } from '@/lib/jwt'
 import User from '@/models/User'
 
+export const dynamic = 'force-dynamic'
+
 // POST - Create application
 export async function POST(request: NextRequest) {
   try {

@@ -4,6 +4,8 @@ import Job from '@/models/Job'
 import { verifyToken } from '@/lib/jwt'
 import User from '@/models/User'
 
+export const dynamic = 'force-dynamic'
+
 // GET - Get all jobs
 export async function GET(request: NextRequest) {
   try {
