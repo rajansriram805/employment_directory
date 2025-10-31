@@ -1,4 +1,10 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Home - Employment Directory',
+  description: 'Find your dream job or post job openings',
+}
 
 export const dynamic = 'force-dynamic'
 
