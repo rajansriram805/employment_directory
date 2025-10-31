@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Mongoose } from 'mongoose'
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/employment_directory'
 
@@ -14,8 +14,8 @@ if (!MONGODB_URI) {
 declare global {
   // eslint-disable-next-line no-var
   var mongoose: {
-    conn: typeof mongoose | null
-    promise: Promise<typeof mongoose> | null
+    conn: Mongoose | null
+    promise: Promise<Mongoose> | null
   }
 }
 
@@ -35,9 +35,9 @@ async function connectDB() {
       bufferCommands: false,
     }
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongooseInstance: Mongoose) => {
       console.log('✓ Connected to MongoDB')
-      return mongoose
+      return mongooseInstance
     })
   }
 
