@@ -38,6 +38,12 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
   const checkAuth = async () => {
     try {
+      // Check if we're in browser environment
+      if (typeof window === 'undefined') {
+        setLoading(false)
+        return
+      }
+
       const token = localStorage.getItem('token')
       if (!token) {
         setLoading(false)
@@ -54,6 +60,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         localStorage.removeItem('token')
       }
     } catch (error) {
+      // Silently fail - user is just not logged in
       localStorage.removeItem('token')
     } finally {
       setLoading(false)
